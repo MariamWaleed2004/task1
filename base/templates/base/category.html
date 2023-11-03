@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
+    <title>Document</title>
+</head>
+<body>
+{% block content %}
+    
+       {% for category in categories %}
+        <section class="cards">
+            <div class="content">
+        <div class="card">
+            <div class="icon">
+                <a href="{% url 'products' %}?q={{category.name}}"><img src="{{category.photo.url}}"></a>
+            </div>
+            <div class="info">
+                <h3><a href="{% url 'products' %}?q={{category.name}}">{{category.name}}</a></h3>
+
+            </div>
+        </div>
+    </section>
+
+    {% endfor %}
+{% endblock %}
+</body>
+</html>

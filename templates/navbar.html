@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- ::::::::::::::All CSS Files here :::::::::::::: -->
+  <!-- Vendor CSS -->
+  <link rel="stylesheet" href="{% static 'styles/vendor/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/vendor/ionicons.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/vendor/simple-line-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/vendor/jquery-ui.min.css' %}">
+
+  <!-- Plugin CSS -->
+  <link rel="stylesheet" href="{% static 'styles/plugins/swiper-bundle.min.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/plugins/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/plugins/nice-select.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/plugins/venobox.min.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/plugins/jquery.lineProgressbar.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/plugins/aos.min.css' %}">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
+  <!--<link rel="stylesheet" href="{% static 'styles/style.css' %}" />--->
+ 
+
+
+  <title>PoisonDoux</title>
+</head>
+<body>
+<div class="header">
+  <nav>
+
+  <!-- Start Header Logo -->
+  <div class="logo">
+    <a href="/"><h1>PoisonDoux</h1></a>
+  </div>
+  <!-- End Header Logo -->
+
+<div class="navigation">
+  <a href="#services">Home</a>
+  <a href="#projects">About us</a>
+  <a href="#contact">Contact us</a>
+</div>
+
+   {% if request.user.is_authenticated %}
+   
+  
+    <ul>
+    
+      <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+      <div class="sub-menu-wrap" id="subMenu">
+        <div class="sub-menu">
+          <div class="user-info">
+            <img src="{% static 'images/profile.png' %}">
+            <h2>Hello {{request.user}}</h2>
+          </div>
+          <hr>
+          <a href="{% url 'cart' user.id %}" class="sub-menu-link">
+
+            <img src="{% static 'images/cart-logo.png' %}">
+            <p>Cart</p>
+            <span>></span>
+          </a>
+       
+
+          <a href="#" class="sub-menu-link">
+            <img src="{% static 'images/heart-logo-3.png' %}">
+            <p>likes</p>
+            <span>></span>
+          </a>
+
+
+
+          <a href="{% url 'logout' %}" class="sub-menu-link">
+            <img src="{% static 'images/logout.png' %}">
+            <p>Logout</p>
+            <span>></span>
+          </a>
+        </div>
+      </div>
+    </ul>
+
+    {% else %}
+    <a href="{% url 'login' %}" class="loguser">Sign in</a>
+    {% endif %}
+  </nav>
+</div>
+
+<script>
+  let subMenu = document.getElementById("subMenu");
+
+  function toggleMenu(){
+    subMenu.classList.toggle("open-menu");
+  }
+</script>
+
+  
+
+  </body>
+  </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

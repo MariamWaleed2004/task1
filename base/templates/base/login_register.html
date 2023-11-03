@@ -1,0 +1,69 @@
+{% extends 'main.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
+
+</head>
+<body class="login-body">
+    {% block content %}
+    <div>
+        {% if page == 'login' %}
+        <div class="login-form">
+            <h1>Login</h1>
+            <form method="POST" action="">
+                {% csrf_token %}
+                
+                <label>Username:</label>
+                <input type="text" name="username" placeholder="Enter Your Username" />
+                <br>
+                <label>Password:</label>
+                <input type="password" name="pass1" placeholder="Enter Your Password" />
+
+                <br>
+                <br>
+                <input type="submit" value="Login" />
+
+                <p>Haven't signed up yet?<a href="{% url 'register' %}">  Sign up</a></p>
+            </form>
+        </div>
+
+        {% else %}
+        <div class="signup-form">
+            <h1>Sign Up</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <label>Username</label>
+            <input type="text" id="username" name="username" placeholder="Create A Username..." required />
+            <br>
+
+            <label>Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter Your Email..." required />
+            <br>
+        
+            <label>Number</label>
+            <input type="text" id="num" name="num" placeholder="Enter Your Number" required />
+            <br>
+        
+            <label>Password</label>
+            <input type="password" id="pass1" name="pass1" placeholder="Create A Password..." required />
+            <br>
+        
+            <label>Confirm your password</label>
+            <input type="password" id="pass2" name="pass2" placeholder="Confirm Your Password..." required />
+            <br>
+        
+            <input type="submit" value="Sign Up" />
+            <p>Already signed up ?<a href="{% url 'login' %}">Signin</a></p>
+        </form> 
+        
+        </div>
+        {% endif %}
+        {% endblock content %}
+    </div>
+</body>
+</html>

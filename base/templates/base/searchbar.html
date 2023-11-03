@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
+    <title>Document</title>
+
+</head>
+<body>
+  {% block content %}
+ 
+  {% for product in products %}
+
+<div class="products">
+    <div class="content">
+      <div class="product-card">
+        <div class="product-image">
+          <img src="{% static 'images/cart-img.jpg' %}">
+        </div>
+        <div class="product-info">
+            <p class="product-category">{{product.price}} EGP</p>
+            <strong class="product-title">
+              <span>{{product.name}}</span>
+              <a href="{% url 'product' product.id %}" class="more-details">More Details</a>
+            </strong>
+        </div>
+    </div> 
+  </div>
+</div>
+
+  {% endfor %}
+  
+  
+ {% endblock %}
+
+</body>
+</html>

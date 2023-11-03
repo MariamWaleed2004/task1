@@ -1,0 +1,47 @@
+{% extends 'main.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
+    <title>Document</title>
+<style>
+</style>
+</head>
+<body>
+{% block content %}
+<div class="single-card">
+<div class="products">
+  <div class="content">
+    <div class="single-product-card">
+      <div class="product-image">
+        <img src="{% static 'images/bottle.png' %}">
+      </div>
+      <div class="product-info">
+          <p>{{product.price}} $</p>
+          <p>{{product.quantity}} Gm</p>
+          <strong class="product-title">
+            <span>{{product.name}}</span>
+
+           <form action="/add_to_cart">
+              {% csrf_token %}
+                <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id" />
+                <button type="submit" class="more-details">Add To Cart</button>
+          
+            </form> 
+          </strong>
+      </div>
+  </div> 
+</div>
+</div>  
+</div>
+ {% endblock %}
+</body>
+</html>
+
+
+
+
+

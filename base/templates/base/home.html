@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
+    <title>Document</title>
+</head>
+<body>
+{% block content %}
+    <div class="home-container">
+        <section class="main">
+            <div>
+            <h2>Welcome in our website PoisonDoux<br><span>Poison Store</span></h2>
+            <h3>We Sell poisons </h3>
+            <a href="{% url 'category'%}" class="main-btn">Shop Now</a>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+      </section>
+
+    </div>
+   
+
+
+{% endblock %}
+</body>
+</html>
