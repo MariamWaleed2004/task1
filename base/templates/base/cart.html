@@ -10,10 +10,12 @@
 </head>
 <body>
 {% block content %}
+
     <div>
         <h2>My Cart</h2>
             {% csrf_token %}
                 {% for cartitem in cartitems %}
+
         <section>
                 No. : {{forloop.counter}}
                 <br>

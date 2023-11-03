@@ -166,9 +166,18 @@ def cartitem(request, pk):
 @login_required(login_url='login')
 def cart(request, pk):
     user = User.objects.get(id=pk)
-    cartitems = user.cartitem_set.all()
-    context = {'user': user, 'cartitems' : cartitems}
-    return render(request, 'base/cart.html', context)
+    cartitems = CartItem.objects.filter(user= request.user,ordered=False).all()
+    if cartitems:
+        print("Hello")
+        context = {'user': user, 'cartitems' : cartitems}
+        return render(request, 'base/cart.html', context)
+    else:
+        print("Mariam")
+        return render(request, 'base/emptyCart.html')
+
+
+  
+   
     
     
 
@@ -184,46 +193,46 @@ def products(request):
 
 
 
-#def checkout(request):
-    user = User.objects.filter(id=request.user.id).first()
-    products = Poison.objects.filter().values()
+# def checkout(request):
+#     user = User.objects.filter(id=request.user.id).first()
+#     products = Poison.objects.filter().values()
 
-    cart = Cart.objects.filter(user=request.user).values()
+#     cart = Cart.objects.filter(user=request.user).values()
 
-    cartItem = CartItems.objects.filter(user=request.user, ordered=False).values()
+#     cartItem = CartItems.objects.filter(user=request.user, ordered=False).values()
     
-    cartItems = CartItems.objects.filter(user=request.user, ordered=False)
+#     cartItems = CartItems.objects.filter(user=request.user, ordered=False)
 
-    categories = Category.objects.filter()
-
-
-    for getting_Id in cartItem:
-        cartItem_id = getting_Id['id']
+#     categories = Category.objects.filter()
 
 
+#     for getting_Id in cartItem:
+#         cartItem_id = getting_Id['id']
 
-    if request.method == 'POST':
-        Order.objects.create(
-            user=request.user)
-        order = Order.objects.filter(
-            user=request.user, delivered=False, paid=False).values()
+
+
+#     if request.method == 'POST':
+#         Order.objects.create(
+#             user=request.user)
+#         order = Order.objects.filter(
+#             user=request.user, delivered=False, paid=False).values()
         
-        for getting_Id in order:
-            order_id = getting_Id['id']
-        order_id
-        print(order_id)
-
-        
-        CartItems.objects.filter(user=request.user, id=cartItem_id).update(
-            ordered=True,
-            orderId=order_id,
-        )
-        Cart.objects.filter(user=request.user).update(total_price=0)
-
+#         for getting_Id in order:
+#             order_id = getting_Id['id']
+#         order_id
+#         print(order_id)
 
         
-        return redirect('base/thankyou')
-    return render(request, 'base/checkout.html')
+#         CartItems.objects.filter(user=request.user, id=cartItem_id).update(
+#             ordered=True,
+#             orderId=order_id,
+#         )
+#         Cart.objects.filter(user=request.user).update(total_price=0)
+
+
+        
+#         return redirect('base/thankyou')
+#     return render(request, 'base/checkout.html')
 
 
 @login_required(login_url='login')
